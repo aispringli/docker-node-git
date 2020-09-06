@@ -14,7 +14,7 @@ build:
 build_version:
   stage: build
   only:
-    - /^release\/.+$/
+    # - /^release\/.+$/
     - tag
   script:
     - echo ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
