@@ -8,6 +8,8 @@ stages:
 build:
   stage: build
   script:
+    - echo  ${CI_REGISTRY_IMAGE//:/latest:}
+    - echo  ${CI_REGISTRY_IMAGE:latest}
     - docker build -t ${CI_REGISTRY_IMAGE//:/latest:} .
 
 build_version:
