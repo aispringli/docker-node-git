@@ -12,6 +12,12 @@ build:
     - echo "$CI_REGISTRY_IMAG"
     - echo ${CI_REGISTRY_IMAG}
     - echo $CI_REGISTRY_IMAG
+    - echo "${CI_COMMIT_REF_NAME}"
+    - echo "$CI_COMMIT_REF_NAME"
+    - echo ${CI_COMMIT_REF_NAME}
+    - echo $CI_COMMIT_REF_NAME
+    - echo "123"
+    - echo 123
     - echo "${CI_REGISTRY_IMAGE//:/latest:}"
     - echo "${CI_REGISTRY_IMAGE:latest}"
     - docker build -t "${CI_REGISTRY_IMAGE}" .
