@@ -15,7 +15,7 @@ build_version:
   stage: build
   only:
     # - /^release\/.+$/
-    - tag
+    - tags
   script:
     - echo ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
     - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME} .
