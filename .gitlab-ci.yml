@@ -14,7 +14,8 @@ build:
     - if: '$CI_COMMIT_BRANCH =~ /^release/'
       when: never
     - if: $CI_COMMIT_BRANCH
-
+  environment:
+    name: build
   script:
     - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHORT_SHA" .
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -28,6 +29,10 @@ build_version:
     - if: '$CI_COMMIT_BRANCH !~ /^release/'
       when: never
     - if: $CI_COMMIT_BRANCH
+
+  environment:
+    name: build_version
+  
   script:
     - echo ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
     - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME} .
@@ -36,6 +41,10 @@ build_version:
 
 deploy:
   stage: deploy
+
+  environment:
+    name: deploy
+
   only:
     - tags
   script:
