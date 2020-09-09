@@ -16,6 +16,7 @@ build:
     - if: $CI_COMMIT_BRANCH
   environment:
     name: build
+    url: http://git.aispring.cloud
   script:
     - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME-$CI_COMMIT_SHORT_SHA" .
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -32,6 +33,7 @@ build_version:
 
   environment:
     name: build_version
+    url: http://git.aispring.cloud
   
   script:
     - echo ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
@@ -44,6 +46,7 @@ deploy:
 
   environment:
     name: deploy
+    url: http://git.aispring.cloud
 
   only:
     - tags
