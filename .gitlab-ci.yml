@@ -18,7 +18,7 @@ build:
 build_version:
   stage: build
   except:
-    - /^(?!release)/
+    - /^(\?!release)/
   script:
     - echo ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
     - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME} .
