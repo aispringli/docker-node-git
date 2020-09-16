@@ -44,7 +44,6 @@ build_version:
   environment:
     name: build_version
     url: http://git.aispring.cloud
-    on_stop: stop_review
 
 
 deploy:
