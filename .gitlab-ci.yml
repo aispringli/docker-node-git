@@ -5,7 +5,7 @@ stages:
   - deploy
 
 
-variables:
+variables: &VARIABLES
   BRANCH_NAME: "$CI_COMMIT_REF_NAME_$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
 
 build:
