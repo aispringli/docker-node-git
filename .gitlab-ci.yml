@@ -6,7 +6,7 @@ stages:
 
 
 variables:
-  BRANCH_NAME: $CI_COMMIT_REF_NAME$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+  BRANCH_NAME: $CI_COMMIT_REF_NAME_$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
 
 build:
   stage: build
@@ -29,6 +29,8 @@ build_version:
   rules:     
     - if: '$CI_COMMIT_BRANCH !~ /^release/'
       when: never
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH
   script:
     - echo ${CI_REGISTRY_IMAGE}:${BRANCH_NAME}
     - docker build -t ${CI_REGISTRY_IMAGE}:${BRANCH_NAME} .
